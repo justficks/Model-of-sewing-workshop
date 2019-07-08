@@ -6,7 +6,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <enterWondowData @dataReadyFromChild="dataReadyGo"/>
-      <v-btn color="warning" @click="crear">Очистить массивы</v-btn>
+      <v-btn color="warning" @click="cleare">Очистить массивы</v-btn>
       <v-btn color="success" @click="openResults">Открыть окно результатов</v-btn>
     </v-toolbar>
     <v-content>
@@ -30,7 +30,9 @@ export default {
       await this.$refs.foo.run(value)
       this.$refs.foo.work(value.weeks)
     },
-    crear() {},
+    cleare() {
+      this.$refs.foo.clearall()
+    },
     openResults() {},
   }
 };

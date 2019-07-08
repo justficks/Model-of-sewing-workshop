@@ -91,22 +91,28 @@ export default {
   },
   data: () => ({
     interval: null,
+    time: 1,
+    countWeeks: 0,
     enteredData: {},
 
     workplace: [],
     spareplace: [],
     workers: [],
+
     stopingArr: [],
     reserveArr: [],
     workingArr: [],
     fixingArr: [],
+
     loseMoneyNotWorking: 0,
     avgLoseMoneyNotWorking: 0,
     avgLoseMoneyNotWorkingWeeks: [],
 
+    loseMoneyNotWorkingSum: '',
+    loseMoneyNotWorkingSum1: '',
+    loseMoneyNotWorkingSum2: '',
+
     countArendMachine: 0,
-    countWeeks: 0,
-    time: 1,
     salaryWorker: '', //Зарплата рабочих
     priceOfArend: '', //Стоимость аренды
     loseMoney: '', //Убыток из-за простоя одного рабочего места
@@ -275,12 +281,10 @@ export default {
                                       (this.priceOfArend / this.countWeeks)
         this.loseMoneyNotWorkingSum2 = sum4
         this.$refs.firstDT.loading = false
-        this.dialog = true
         this.loseMoney = this.salaryWorker + this.priceOfArend + sum4
       }
     },
     run(value) {
-      alert("Заполняем массивы")
       this.enteredData = value
       for (var i = 0; i < this.enteredData.nowon; i++) {
         var newMachine = {
@@ -316,6 +320,44 @@ export default {
     },
     getRandom(min, max) {
       return Math.random() * (max - min) + min;
+    },
+
+    clearall() {
+      this.interval = null
+      this.time = 1
+      this.countWeeks = 0
+
+      this.workplace = []
+      this.spareMachine = []
+      this.workers = []
+      
+      this.stopingArr = []
+      this.reserveArr = []
+      this.workingArr = []
+      this.fixingArr = []
+
+      this.loseMoneyNotWorking = 0
+      this.avgLoseMoneyNotWorking = 0
+      this.avgLoseMoneyNotWorkingWeeks = []
+
+      this.loseMoneyNotWorkingSum = ''
+      this.loseMoneyNotWorkingSum1 = ''
+      this.loseMoneyNotWorkingSum2 = ''
+
+      this.countArendMachine = 0
+      this.salaryWorker = ''
+      this.priceOfArend = ''
+      this.loseMoney = ''
+
+      this.$refs.firstDT.desserts[0].countWeeks = ''
+      this.$refs.firstDT.desserts[0].avgLoseMoneyNotWorking = ""
+      this.$refs.firstDT.desserts[0].avgStoping = ""
+      this.$refs.firstDT.desserts[0].avgReserve = ""
+      this.$refs.firstDT.desserts[0].avgWorking = ""
+      this.$refs.firstDT.desserts[0].avgFixing = ""
+      this.$refs.firstDT.desserts[0].avgLoseMoneyNotWorking = ""
+
+      alert('Очищенно ')
     }
   },
   computed: {
