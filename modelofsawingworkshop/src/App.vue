@@ -6,21 +6,11 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <enterWondowData @dataReadyFromChild="dataReadyGo"/>
-      <v-btn color="success" @click="crear">Очистить массивы</v-btn>
+      <v-btn color="warning" @click="crear">Очистить массивы</v-btn>
       <v-btn color="success" @click="openResults">Открыть окно результатов</v-btn>
     </v-toolbar>
     <v-content>
-      <HelloWorld
-        :nowon="dataReady.nowon"
-        :spareMachine="dataReady.spareMachine"
-        :worker="dataReady.worker"
-        :avgTimeWork="dataReady.avgTimeWork"
-        :avgTimeFix="dataReady.avgTimeFix"
-        :costArendPerDay="dataReady.costArendPerDay"
-        :costSalaryPerDay="dataReady.costSalaryPerDay"
-        :costStopPerDay="dataReady.costStopPerDay"
-        ref="foo"
-      />
+      <HelloWorld ref="foo"/>
     </v-content>
   </v-app>
 </template>
@@ -35,14 +25,10 @@ export default {
     HelloWorld,
     enterWondowData
   },
-  data: () => ({
-    dataReady: {}
-  }),
   methods: {
     async dataReadyGo(value) {
-      this.dataReady = value
-      await this.$refs.foo.run()
-      this.$refs.foo.work(this.dataReady.weeks)
+      await this.$refs.foo.run(value)
+      this.$refs.foo.work(value.weeks)
     },
     crear() {},
     openResults() {},
