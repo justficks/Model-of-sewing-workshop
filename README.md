@@ -19,8 +19,10 @@ npm run serve
 1. Вводим данные (кнопка "Ввести данные") и моделируем
 ---
 ![Ввод данных](https://github.com/justficks/Model-of-sawing-workshop/raw/master/modelofsawingworkshop/public/enteredData.PNG)
+---
 2. Получаем смоделированные результаты
 ---
 ![Результаты](https://github.com/justficks/Model-of-sawing-workshop/raw/master/modelofsawingworkshop/public/results.PNG)
+
 
 
