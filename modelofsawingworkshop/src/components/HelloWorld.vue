@@ -1,6 +1,14 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <firstDT/>
+    <v-layout>
+      <v-flex xs6>
+        
+      </v-flex>
+      <v-flex xs6>
+
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
