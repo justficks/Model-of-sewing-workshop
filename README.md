@@ -1,5 +1,5 @@
 # Model-of-sawing-workshop
-![Иллюстрация к проекту]()
+![Иллюстрация к проекту](https://github.com/justficks/Model-of-sawing-workshop/raw/master/modelofsawingworkshop/public/main.PNG)
 ***
 Моделирование работы швейного цеха
 ***
