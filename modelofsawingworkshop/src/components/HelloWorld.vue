@@ -56,12 +56,13 @@
             <h2>Ремонтный цех</h2>
             <v-layout row wrap py-1>
               <v-flex xs6>
+                <h3>Рабочие</h3>
                 <div
                   v-for="place in workers"
                   :key="place.id"
                   id="remont"
                   class="item elevation-5"
-                >Рабочий №{{ place.id }}</div>
+                >Номер {{ place.id }}</div>
               </v-flex>
               <v-flex xs6>
                 <h3>Машина на ремонте</h3>
@@ -422,12 +423,12 @@ h2 {
   margin: 25px;
 }
 #remont {
-  border: 2px solid brown;
+  border: 2px solid black;
   border-radius: 5px;
   width: 150px;
-  height: 50px;
-  margin: 25px;
-  padding: 10px;
+  height: 30px;
+  margin: 20px;
+  padding: 2px;
 }
 #remontCeh {
   border: solid 1px grey;
@@ -437,6 +438,6 @@ h2 {
   border-radius: 5px;
   width: 30px;
   height: 30px;
-  margin: 20px;
+  margin: 10px;
 }
 </style>
