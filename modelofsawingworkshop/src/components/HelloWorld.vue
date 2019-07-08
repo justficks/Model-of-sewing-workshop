@@ -79,15 +79,18 @@
         </v-layout>
       </v-flex>
     </v-layout>
+    <resultDialog ref="resultDialog"/>
   </v-container>
 </template>
 
 <script>
 import firstDT from "../components/firtsDT";
+import resultDialog from "../components/resultDialog"
 
 export default {
   components: {
-    firstDT
+    firstDT,
+    resultDialog
   },
   data: () => ({
     interval: null,
@@ -269,19 +272,21 @@ export default {
       } else {
         clearInterval(this.interval);
         var pastDays = Math.floor((this.time - 1) / 8) //Сколько прошло дней
-        this.salaryWorker = this.workers.length * pastDays * this.enteredData.costSalaryPerDay
-        this.priceOfArend = this.countArendMachine * pastDays * this.enteredData.costArendPerDay
+        this.$refs.resultDialog.salaryWorker = this.workers.length * pastDays * this.enteredData.costSalaryPerDay
+        this.$refs.resultDialog.priceOfArend = this.countArendMachine * pastDays * this.enteredData.costArendPerDay
         var sum4 = 0
         for ( i = 0; i < this.avgLoseMoneyNotWorkingWeeks.length; i++) {
           sum4 = sum4 + this.avgLoseMoneyNotWorkingWeeks[i]
         }
-        this.loseMoneyNotWorkingSum = sum4 / this.avgLoseMoneyNotWorkingWeeks.length
-        this.loseMoneyNotWorkingSum1 = this.loseMoneyNotWorkingSum + 
-                                      (this.salaryWorker / this.countWeeks) + 
-                                      (this.priceOfArend / this.countWeeks)
-        this.loseMoneyNotWorkingSum2 = sum4
+        this.$refs.resultDialog.loseMoneyNotWorkingSum = sum4 / this.avgLoseMoneyNotWorkingWeeks.length
+        this.$refs.resultDialog.loseMoneyNotWorkingSum1 = this.$refs.resultDialog.loseMoneyNotWorkingSum + 
+                                      (this.$refs.resultDialog.salaryWorker / this.countWeeks) + 
+                                      (this.$refs.resultDialog.priceOfArend / this.countWeeks)
+        this.$refs.resultDialog.loseMoneyNotWorkingSum2 = sum4
         this.$refs.firstDT.loading = false
-        this.loseMoney = this.salaryWorker + this.priceOfArend + sum4
+        this.$refs.resultDialog.loseMoney = this.$refs.resultDialog.salaryWorker + this.$refs.resultDialog.priceOfArend + sum4
+
+        this.$refs.resultDialog.dialog = true
       }
     },
     run(value) {
@@ -358,6 +363,9 @@ export default {
       this.$refs.firstDT.desserts[0].avgLoseMoneyNotWorking = ""
 
       alert('Очищенно ')
+    },
+    openResults() {
+      this.$refs.resultDialog.dialog = true
     }
   },
   computed: {

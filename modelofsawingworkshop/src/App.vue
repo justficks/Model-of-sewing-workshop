@@ -33,7 +33,9 @@ export default {
     cleare() {
       this.$refs.foo.clearall()
     },
-    openResults() {},
+    openResults() {
+      this.$refs.foo.openResults()
+    },
   }
 };
 </script>
