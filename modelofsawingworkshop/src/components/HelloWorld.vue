@@ -294,6 +294,7 @@ export default {
 
         this.$refs.resultDialog.dialog = true
         this.$emit('hideBtn')
+        this.clearall()
       }
     },
     run(value) {
