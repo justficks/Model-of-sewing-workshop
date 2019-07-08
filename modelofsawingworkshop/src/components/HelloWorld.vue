@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-md text-xs-center>
-    <firstDT ref="firstDT"/>
+    <firstDT ref="firstDT" />
     <v-layout>
       <v-flex xs6></v-flex>
       <v-flex xs6></v-flex>
@@ -31,8 +31,20 @@ export default {
     spareplace: [],
     workers: [],
     countArendMachine: 0,
+    countWeeks: 0,
+    time: 1
   }),
   methods: {
+    work(countWeeks) {
+      this.countWeeks = countWeeks;
+      this.interval = setInterval(this.start, 10);
+    },
+    start() {
+      if (this.time <= this.countWeeks * 40) {
+        this.$refs.firstDT.desserts[0].countWeeks = Math.floor(this.time / 40)
+        this.time++
+      }
+    },
     run() {
       this.$refs.firstDT.loading = true;
       for (var i = 0; i < this.nowon; i++) {

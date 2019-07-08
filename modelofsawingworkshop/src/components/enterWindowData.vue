@@ -102,7 +102,7 @@ export default {
         costSalaryPerDay: this.costSalaryPerDay,
         costStopPerDay: this.costStopPerDay
       }
-      this.$emit('dataReady', newObj)
+      this.$emit('dataReadyFromChild', newObj)
     },
     reset() {
       this.$refs.form.reset();

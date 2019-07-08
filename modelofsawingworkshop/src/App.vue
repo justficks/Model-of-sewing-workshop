@@ -5,7 +5,7 @@
         <span class="font-weight-light">МОДЕЛИРОВАНИЕ РАБОТЫ ШВЕЙНОГО ЦЕХА</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <enterWondowData @dataReady="dataReady"/>
+      <enterWondowData @dataReadyFromChild="dataReadyGo"/>
       <v-btn color="success" @click="crear">Очистить массивы</v-btn>
       <v-btn color="success" @click="openResults">Открыть окно результатов</v-btn>
     </v-toolbar>
@@ -39,11 +39,13 @@ export default {
     dataReady: {}
   }),
   methods: {
+    async dataReadyGo(value) {
+      this.dataReady = value
+      await this.$refs.foo.run()
+      this.$refs.foo.work(this.dataReady.weeks)
+    },
     crear() {},
     openResults() {},
-    dataReady(value) {
-      this.dataReady = value
-    }
   }
 };
 </script>
