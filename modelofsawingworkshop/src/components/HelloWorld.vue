@@ -130,8 +130,13 @@ export default {
   }),
   methods: {
     work(countWeeks) {
-      this.countWeeks = parseInt(countWeeks)
-      this.interval = setInterval(this.start, 10);
+      if (countWeeks == "con") {
+        this.interval = setInterval(this.start, 10);
+        this.$refs.firstDT.loading = true
+      } else {
+        this.countWeeks = parseInt(countWeeks)
+        this.interval = setInterval(this.start, 10);
+      }
     },
     start() {
       this.$refs.firstDT.loading = true;
@@ -287,6 +292,7 @@ export default {
         this.$refs.resultDialog.loseMoney = this.$refs.resultDialog.salaryWorker + this.$refs.resultDialog.priceOfArend + sum4
 
         this.$refs.resultDialog.dialog = true
+        this.$emit('hideBtn')
       }
     },
     run(value) {
@@ -366,6 +372,10 @@ export default {
     },
     openResults() {
       this.$refs.resultDialog.dialog = true
+    },
+    stopWork() {
+      clearInterval(this.interval)
+      this.$refs.firstDT.loading = false
     }
   },
   computed: {
